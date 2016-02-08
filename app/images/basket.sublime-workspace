@@ -1,0 +1,361 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"print",
+				"printa1"
+			],
+			[
+				"wi",
+				"width"
+			],
+			[
+				"on",
+				"onclick	Attr"
+			],
+			[
+				"or",
+				"order_type"
+			],
+			[
+				"a",
+				"access_token"
+			],
+			[
+				"re",
+				"reset_password"
+			],
+			[
+				"get",
+				"getAccessToken"
+			],
+			[
+				"back",
+				"background"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"focus",
+				"focused"
+			],
+			[
+				"t",
+				"target"
+			],
+			[
+				"Lo",
+				"loginCTRL"
+			],
+			[
+				"ma",
+				"margin-left"
+			],
+			[
+				"for",
+				"forgot-password"
+			],
+			[
+				"s",
+				"sign-up"
+			],
+			[
+				"login",
+				"login-btn"
+			],
+			[
+				"E",
+				"Exception"
+			],
+			[
+				"Ex",
+				"except"
+			],
+			[
+				"da",
+				"datetime"
+			],
+			[
+				"date",
+				"datetime"
+			],
+			[
+				"ro",
+				"routerApp"
+			],
+			[
+				"ba",
+				"background-color"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/gaurav/FabFresh-WebApplication/app/index.html",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/app.js",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/controllers/otpCTRL.js",
+		"/home/gaurav/C_CPP/cp.cpp",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/controllers/reset_passwordCTRL.js",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/controllers/sign_upCTRL.js",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/services/services.js",
+		"/media/gaurav/F7CC-6981/loginCTRL.js",
+		"/media/gaurav/F7CC-6981/services.js",
+		"/home/gaurav/C_CPP/input.txt",
+		"/home/gaurav/FabFresh-WebApplication/app/views/address_list.html",
+		"/home/gaurav/FabFresh-WebApplication/app/styles/orders.css",
+		"/home/gaurav/FabFresh-WebApplication/app/styles/users.css",
+		"/home/gaurav/FabFresh-WebApplication/app/styles/main.css",
+		"/home/gaurav/FabFresh-WebApplication/app/styles/address_list.css",
+		"/home/gaurav/FabFresh-WebApplication/app/styles/mainApp.css",
+		"/home/gaurav/FabFresh-WebApplication/app/views/orders.html",
+		"/home/gaurav/FabFresh-WebApplication/app/views/login.html",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/geomap.js",
+		"/home/gaurav/FabFresh-WebApplication/app/views/homepage.html",
+		"/home/gaurav/FabFresh-WebApplication/app/styles/login.css",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/controllers/loginCTRL.js",
+		"/home/gaurav/FabFresh-WebApplication/app/views/reset_password.html",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/controllers/homepageCTRL.js",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/controllers/homeCTRL.js",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/controllers/address_listCTRL.js",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/controllers/ordersCTRL.js",
+		"/media/gaurav/F7CC-6981/push.txt",
+		"/media/gaurav/ravi/paw/geomap.js",
+		"/media/gaurav/ravi/paw/mainApp.css",
+		"/media/gaurav/ravi/geomap.js",
+		"/home/gaurav/FabFresh-prod/order/views.py",
+		"/home/gaurav/FabFresh-prod/order/models.py",
+		"/home/gaurav/FabFresh-WebApplication/app/views/sign_up.html",
+		"/media/gaurav/ravi/mainApp.css",
+		"/home/gaurav/FabFresh-WebApplication/app/views/forgot_password.html",
+		"/home/gaurav/FabFresh-WebApplication/app/views/otp.html",
+		"/home/gaurav/FabFresh-WebApplication/app/homepage.html",
+		"/home/gaurav/FabFresh-WebApplication/app/robots.txt",
+		"/media/gaurav/ravi/landing page/mine.html",
+		"/media/gaurav/ravi/landing page/layout3.html",
+		"/media/gaurav/ravi/landing page/mainApp.css",
+		"/home/gaurav/FabFresh-WebApplication/app/favicon.ico",
+		"/home/gaurav/FabFresh-WebApplication/app/views/main.html",
+		"/home/gaurav/ui-router/sample/index.html",
+		"/home/gaurav/ui-router/README.md",
+		"/home/gaurav/FabFresh-WebApplication/app/views/address.html",
+		"/media/gaurav/F7CC-6981/Ravi_backup",
+		"/home/gaurav/FabFresh-WebApplication/app/landing_page/app1.js",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/controllers/main.js",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/hide.js",
+		"/home/gaurav/my.html",
+		"/media/gaurav/F7CC-6981/otpCTRL.js",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/controllers/sign-upCTRL.js",
+		"/home/gaurav/FabFresh-WebApplication/app/views/sign-up.html",
+		"/home/gaurav/FabFresh-WebApplication/app/views/forgot-password.html",
+		"/media/gaurav/F7CC-6981/loginCTRL1.js",
+		"/home/gaurav/FabFresh-prod/users/views.py",
+		"/home/gaurav/FabFresh-prod/FabFresh/urls.py",
+		"/media/gaurav/F7CC-6981/pawan_app/scripts/hide.js",
+		"/media/gaurav/F7CC-6981/mine_app/scripts/hide.js",
+		"/home/gaurav/FabFresh-prod/users/urls.py",
+		"/media/gaurav/F7CC-6981/app/scripts/hide.js",
+		"/home/gaurav/FabFresh-WebApplication/app/views/reset-password.html",
+		"/home/gaurav/FabFresh-WebApplication/app/scripts/script.js",
+		"/home/gaurav/app/scripts/app.js",
+		"/home/gaurav/app/views/login.html",
+		"/home/gaurav/app/index.html",
+		"/home/gaurav/app/scripts/hide.js",
+		"/home/gaurav/FabFresh-WebApplication/bower.json",
+		"/home/gaurav/bower.json",
+		"/home/gaurav/Downloads/app/views/sign-up.html",
+		"/media/gaurav/F7CC-6981/app/views/forgot-password.html",
+		"/media/gaurav/F7CC-6981/app/views/reset-password.html",
+		"/media/gaurav/F7CC-6981/default_app/scripts/app.js",
+		"/home/gaurav/Downloads/app/scripts/script.js",
+		"/home/gaurav/Downloads/app/views/login.html",
+		"/home/gaurav/Django_Projects/FabFresh-prod/order/models.py",
+		"/home/gaurav/Downloads/app/scripts/app.js",
+		"/home/gaurav/Downloads/app/index.html",
+		"/home/gaurav/Django_Projects/FabFresh-prod/order/admin.py",
+		"/home/gaurav/Django_Projects/FabFresh-prod/Mobile_No_Extracter1.py",
+		"/home/gaurav/Django_Projects/FabFresh-prod/manage.py"
+	],
+	"find":
+	{
+		"height": 27.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"}\n",
+			"reset_passwordCTRL",
+			"alert",
+			"otp_flag",
+			"'},",
+			"order",
+			"\"]",
+			"ui",
+			">\n",
+			"bootstrap",
+			"required",
+			"     \n",
+			"valid",
+			"});",
+			"]);\n",
+			")){",
+			"id",
+			"')",
+			");\n",
+			"id",
+			"');\n",
+			"login"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 27.0
+	},
+	"input":
+	{
+		"height": 33.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "basket.sublime-project",
+	"replace":
+	{
+		"height": 50.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 288.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

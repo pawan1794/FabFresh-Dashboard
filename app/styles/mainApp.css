@@ -1,0 +1,22 @@
+#Main{
+  width:100%;
+  height:100vh;
+
+}
+
+#ui_view {
+    height:inherit;
+    width:100%;
+    float:right;
+}
+
+
+
+#homepage {
+  height:inherit;
+  width:100%;
+}
+
+
+
+
