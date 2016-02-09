@@ -3,24 +3,21 @@
     <div class="container-1">
 
         <input type="search" id="search" ng-model="nameFilter" placeholder="Enter OrderId"/>
-        <input type="search" id="search1" ng-model="nameFilter1" placeholder="Enter Status"/>
+        <input type="checkbox" ng-model="nameFilter1" value="true" checked/>Pickup<br>
+        <input type="checkbox" ng-model="nameFilter2" value="true" checked/>Drop<br>
     </div>
   </div>
 
   <div id="orders_list">
-    <div id="orders" ng-repeat="x in data  | filter: searchFilter |filter: searchFilter1 ">
+    <div id="orders" ng-repeat="x in data  | filter: searchFilter |filter: searchFilter1">
       <div id="order_id" style="background-color: {{getColor(x.created_at_time)}}">
         <h2  style="color:white;" >#{{x.id}}</h2>
       </div>
       <div id="order_description">
-        <p style="color:black;">Amount:{{x.amount}}<br>
-          Created at Time:{{x.created_at_time}}<br>
-          Type:{{x.order_type}}<br>
-          After Discount:{{x.afterDiscount}}<br>
-          Weight:{{x.weight}}<br>
-          Quantity:{{x.quantity}}<br>
-          Coupon:{{x.coupon}}<br>
-          Special Instructions:{{x.special_instructions}}<br>
+        <p style="color:black;">
+          Email:{{x.owner.email}}<br>
+          Username:{{x.owner.username}}<br>
+          Mobile:{{x.owner.UserInfo.phone}}<br>
         </p>
       </div>
       <div id="order_status" style="background-color: {{stringToColor(x.clr)}}">

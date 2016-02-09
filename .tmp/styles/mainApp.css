@@ -105,5 +105,5 @@ transition: background .55s ease;
 }
 .container-1 input#search:hover, .container-1 input#search:focus, .container-1 input#search:active, .container-1 input#search1:hover, .container-1 input#search1:focus, .container-1 input#search1:active{
     outline:none;
-    background: #ffffff;
+    background: lightgray;
   }

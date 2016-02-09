@@ -13,7 +13,7 @@ routerApp
     var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
     $http({
       method  : 'GET',
-      url     : URL+'/orders/',
+      url     : URL+'/order/live/',
       headers : {'Authorization': 'Bearer '+'hari'}//$rootScope.access_token} 
      })
       .success(function(data) {
@@ -65,42 +65,41 @@ routerApp
           //alert(data[0].created_at_time);
           var data1=[];
           for(var i=0;i<data.length;i++){
-              if(data[i].status==2 || data[i].status==11){
-                data[i].clr=colour[data[i].status];
-                data[i].order_type=type[data[i].order_type];
-                data[i].status=type1[data[i].status];
-                var str=data[i].created_at_time;
-                data[i].created_at_time=str.substring(11, 16)+", "+str.substring(0, 10);
-                if(data[i].amount==null)
-                      data[i].amount=0;
-                if(data[i].afterDiscount==null)
-                     data[i].afterDiscount=0;
-                if(data[i].weight==null)
-                     data[i].weight=0;
-                if(data[i].quantity==null)
-                     data[i].quantity=0;
-                if(data[i].rating==null)
-                     data[i].rating="NA";
-                if(data[i].coupon==null)
-                     data[i].coupon="NA";
-                data1.push(data[i]);
-              }
+            if(data[i].status==2 || data[i].status==11){
+              data[i].clr=colour[data[i].status];
+              data[i].order_type=type[data[i].order_type];
+              data[i].status=type1[data[i].status];
+              var str=data[i].created_at_time;
+              data[i].created_at_time=str.substring(11, 16)+", "+str.substring(0, 10);
+              if(data[i].afterDiscount==null)
+                   data[i].afterDiscount=0;
+              if(data[i].coupon==null)
+                   data[i].coupon="NA";
+                 data1.push(data[i]);
+            }
           }
           $scope.data=data1;
 
         }
       });
-
+      $scope.nameFilter1=true;
+      $scope.nameFilter2=true;
       $scope.searchFilter = function (x) {
         var re = new RegExp($scope.nameFilter, 'i');
         return !$scope.nameFilter || re.test(x.id) ;
       };
       $scope.searchFilter1 = function (x) {
-        var re = new RegExp($scope.nameFilter1, 'i');
-        return !$scope.nameFilter1 || re.test(x.status) ;
+        if($scope.nameFilter1==undefined  || ( $scope.nameFilter1 && $scope.nameFilter2))
+          return true;
+        if( !$scope.nameFilter1 && !$scope.nameFilter2)
+          return false;
+        if($scope.nameFilter1)
+          var re = new RegExp("pickup", 'i');
+        else
+          var re = new RegExp("drop", 'i');
+        return re.test(x.status) ;
       };
     
-      
       $scope.stringToColor = function(str) {
         return str;
       };
