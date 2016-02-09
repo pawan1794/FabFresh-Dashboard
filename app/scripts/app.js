@@ -17,7 +17,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             controller: 'loginCTRL',
         })
         .state('homepage', {
-            url: '/#',
+            url: '/homepage',
             templateUrl: '../views/homepage.html',
             controller: 'homepageCTRL',
         })

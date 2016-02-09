@@ -29,7 +29,7 @@ input:focus {
 }
 
 body {
-  background-image: url("http://www.cortlandasc.com/cmsimages/colorful_socks_in_a_laundry_basket.jpg");
+  //background-image: url("http://www.cortlandasc.com/cmsimages/colorful_socks_in_a_laundry_basket.jpg");
   font-family: 'Roboto';
   height: 100vh;
   width: inherit;
