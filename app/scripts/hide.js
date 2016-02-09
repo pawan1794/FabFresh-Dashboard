@@ -2,6 +2,7 @@
 
 
 $(document.body).click(function(e){
+
    var $box = $('#forgot_password');
    if($box[0] && e.target.id !== 'forgot_password' && !$.contains($box[0], e.target))
       $box.remove();
@@ -30,7 +31,6 @@ function boxCloser(e){
      $('#login').hide();
   }
 }
-
 
 $('input').on('focus', function() {
   $('label').addClass('filled focused');

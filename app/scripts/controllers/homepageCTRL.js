@@ -7,7 +7,6 @@ routerApp
     $scope.nameFilter = null;
     $scope.ordersList = [];
 
-
     
 
     var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
@@ -136,4 +135,26 @@ routerApp
         }
         return color;
       };
+
+      
 });
+
+
+routerApp.directive('script1', function() {
+  var flag=0;
+   function load_script() {
+
+            var s = document.createElement('script'); // use global document since Angular's $document is weak
+            s.src = "https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.1.2.js";
+            document.body.appendChild(s);
+            s.src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js";
+            document.body.appendChild(s);
+        }
+    return {
+      restrict: 'E',
+      scope: false,
+      link: function(scope, elem, attr) {
+          load_script();
+      }
+    };
+  });

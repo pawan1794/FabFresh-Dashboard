@@ -3,6 +3,8 @@
 var routerApp = angular.module('routerApp', [
     'ui.router',
     'Login.services',
+    //'ngAnimate',
+    //'ui.bootstrap',
     ]);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
@@ -10,7 +12,6 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home');
     
     $stateProvider
-        
         .state('login', {
             url: '/#',
             templateUrl: '../views/login.html',
@@ -21,5 +22,4 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             templateUrl: '../views/homepage.html',
             controller: 'homepageCTRL',
         })
-        
 });
