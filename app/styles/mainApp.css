@@ -113,3 +113,8 @@ transition: background .55s ease;
     outline:none;
     background: lightgray;
   }
+
+  #label_checkbox{
+    float:right;
+    margin-right: 50px;
+  }

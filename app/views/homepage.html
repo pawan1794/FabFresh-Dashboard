@@ -3,13 +3,21 @@
     <div class="container-1">
 
         <input type="search" id="search" ng-model="nameFilter" placeholder="Enter OrderId"/>
-        <input type="checkbox" ng-model="nameFilter1" value="true" checked/>Pickup<br>
-        <input type="checkbox" ng-model="nameFilter2" value="true" checked/>Drop<br>
+        <!-- <label>PICKUP</label> -->
+        <div id="label_checkbox">
+          <label>Pickup
+          <input id="checkbox1" type="checkbox" ng-model="nameFilter1" value="PickUp" checked/>
+          </label>
+          <br>
+          <label>Drop
+          <input id="checkbox2" type="checkbox" ng-model="nameFilter2" value="Drop" checked>
+        </label>
+        </div>
     </div>
   </div>
 
   <div id="orders_list">
-    <div id="orders" ng-repeat="x in data  | filter: searchFilter |filter: searchFilter1">
+    <div id="orders" ng-repeat="x in data  | filter: searchFilter |filter: searchFilter1" ng-click="open(x)">
       <div id="order_id" style="background-color: {{getColor(x.created_at_time)}}">
         <h2  style="color:white;" >#{{x.id}}</h2>
       </div>
@@ -18,8 +26,9 @@
           Email:{{x.owner.email}}<br>
           Username:{{x.owner.username}}<br>
           Mobile:{{x.owner.UserInfo.phone}}<br>
+          Created at:{{x.created_at_time}}<br>
+          Modified at:{{x.modified_at_time}}<br>
           <!-- <a class="link_class" ui-sref="homepage.order_details"><span>Orders..?</span></a> -->
-          <button type="button" class="btn btn-default" ng-click="open(x)">Open me!</button>
 
         </p>
       </div>

@@ -12,7 +12,7 @@ routerApp
     var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
     $http({
       method  : 'GET',
-      url     : URL+'/order/live/?status=11',
+      url     : URL+'/order/live/',//?status=2',
       headers : {'Authorization': 'Bearer '+'hari'}//$rootScope.access_token} 
      })
       .success(function(data) {
@@ -47,6 +47,8 @@ routerApp
           type["1"] = "Iron";
           type["2"] = "Wash and Iron";
 
+
+
           var colour = {};
           colour["0"] = "#000000";
           colour["1"] = "#987654";
@@ -71,6 +73,11 @@ routerApp
               data[i].status=type1[data[i].status];
               var str=data[i].created_at_time;
               data[i].created_at_time=str.substring(11, 16)+", "+str.substring(0, 10);
+              str=data[i].modified_at_time;
+              if(!str)
+                data[i].modified_at_time="Never";
+              else
+                data[i].modified_at_time=str.substring(11, 16)+", "+str.substring(0, 10);
               if(data[i].afterDiscount==null)
                    data[i].afterDiscount=0;
               if(data[i].coupon==null)
@@ -161,10 +168,21 @@ routerApp
 
 
       
-});
+})
 
 
 
-routerApp.controller('ModalInstanceCtrl', function ($scope, x) {
+.controller('ModalInstanceCtrl', function ($scope, x) {
+   var type = {};
+    type["true"] = "pickup";
+    type["false"] = "drop";
+    var type1 = {};
+    type1["1"] = "roadrunner";
+    type1["2"] = "shadowfax";
+  
+   for(var i=0;i<x.DriverDetails.length;i++){
+      x.DriverDetails[i].new_trip=type[x.DriverDetails[i].new_trip];
+      x.DriverDetails[i].logistics=type1[x.DriverDetails[i].logistics];
+    }
   $scope.data=x;
 });
