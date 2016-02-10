@@ -2,7 +2,7 @@
 
 
 routerApp
-  .controller('homepageCTRL', function($rootScope,$scope, $http) {
+  .controller('homepageCTRL', function( $uibModal, $rootScope,$scope, $http) {
     $scope.user = [];
     $scope.nameFilter = null;
     $scope.ordersList = [];
@@ -12,7 +12,7 @@ routerApp
     var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
     $http({
       method  : 'GET',
-      url     : URL+'/order/live/',
+      url     : URL+'/order/live/?status=11',
       headers : {'Authorization': 'Bearer '+'hari'}//$rootScope.access_token} 
      })
       .success(function(data) {
@@ -40,6 +40,7 @@ routerApp
           type1["10"] = "shipped";
           type1["11"] = "drop";
           type1["12"] = "completed";
+
 
           var type = {};
           type["0"] = "Wash";
@@ -136,25 +137,34 @@ routerApp
         return color;
       };
 
+
+
+
+      $scope.open = function (x) {
+        //alert(x.id);
+        var modalInstance = $uibModal.open({
+          templateUrl: 'views/homepage1.html',
+          controller: 'ModalInstanceCtrl',
+          resolve: {
+              x: function () {
+          return x;
+        }
+      }
+        });
+
+        // modalInstance.result.then(function (selectedItem) {
+        //   $scope.selected = selectedItem;
+        // }, function () {
+        //   $log.info('Modal dismissed at: ' + new Date());
+        // });
+      };
+
+
       
 });
 
 
-routerApp.directive('script1', function() {
-  var flag=0;
-   function load_script() {
 
-            var s = document.createElement('script'); // use global document since Angular's $document is weak
-            s.src = "https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-1.1.2.js";
-            document.body.appendChild(s);
-            s.src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.js";
-            document.body.appendChild(s);
-        }
-    return {
-      restrict: 'E',
-      scope: false,
-      link: function(scope, elem, attr) {
-          load_script();
-      }
-    };
-  });
+routerApp.controller('ModalInstanceCtrl', function ($scope, x) {
+  $scope.data=x;
+});

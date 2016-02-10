@@ -1,2 +1,38 @@
-<script1> 
-    </script1>
+<div>	
+	<div class="modal-header">
+	    <h2 class="modal-title">Order Details</h2>
+	</div>
+	<div class="modal-body">
+		<h4>Driver Details<h3>
+		<p ng-repeat="x in data.DriverDetails">
+	    	ID:{{x.id}}
+	    	Phone:{{x.driver_phone}}
+	    </p>
+
+	    <table style="width:100%" st-table="ordersList" class="table table-striped" st-safe-src="rowCollection">
+<thead>
+  <tr>
+        <th st-sort="address">address</th>
+        <th st-sort="addressLocality">Locality</th>
+        <th st-sort="addressSubLocality">SubLocality</th>
+        <th st-sort="postalcode">PostalCode</th>
+        <th>Lat</th>
+        <th>Long</th>
+  </tr>
+  
+</thead>
+<tbody>
+  <tr ng-repeat="x in data.owner.UserProfile" >
+    <td>{{x.address}}</td>
+    <td>{{x.addressLocality}}</td>
+    <td>{{x.addressSubLocality}}</td>
+    <td>{{x.postalcode}}</td>
+    <td>{{x.addressLatitude}}</td>
+    <td>{{x.addressLongitude}}</td>
+  </tr>
+</tbody>
+
+	    
+	</div>
+	
+</div>

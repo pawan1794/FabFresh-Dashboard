@@ -3,8 +3,8 @@
 var routerApp = angular.module('routerApp', [
     'ui.router',
     'Login.services',
-    //'ngAnimate',
-    //'ui.bootstrap',
+    'ngAnimate',
+    'ui.bootstrap',
     ]);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {

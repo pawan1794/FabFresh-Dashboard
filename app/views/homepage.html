@@ -19,7 +19,8 @@
           Username:{{x.owner.username}}<br>
           Mobile:{{x.owner.UserInfo.phone}}<br>
           <!-- <a class="link_class" ui-sref="homepage.order_details"><span>Orders..?</span></a> -->
-          <button type="button" class="btn btn-default" ng-click="open()">Open me!</button>
+          <button type="button" class="btn btn-default" ng-click="open(x)">Open me!</button>
+
         </p>
       </div>
       <div id="order_status" style="background-color: {{stringToColor(x.clr)}}">
