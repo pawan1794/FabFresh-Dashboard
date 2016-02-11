@@ -2,7 +2,7 @@
 
 
 routerApp
-  .controller('loginCTRL', function($window, $rootScope,$scope, $http, $state) {
+  .controller('loginCTRL', function($cookieStore, $rootScope,$scope, $http, $state) {
     $scope.user = [];
     
     var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
@@ -26,6 +26,8 @@ routerApp
         }
         else {
           $rootScope.access_token = data.access_token;
+          $rootScope.otp_flag = 1;
+          $cookieStore.put('key',data.access_token);
           $state.go("homepage");
         }
       });

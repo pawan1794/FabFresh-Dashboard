@@ -31,9 +31,9 @@
 <title>Fabfresh</title>
 
 <body ng-app="routerApp" ng-controller="homeCTRL">
-<nav ng-hide="access_token" class="nav" role="navigation">
-
-        <li><a  ui-sref="login" id="login_btn">Login</a></li>
+<nav  class="nav" role="navigation">
+    <li ng-hide="getFlag()"><a  ui-sref="login" id="login_btn">Login</a></li>
+    <li ng-show="getFlag()"><a   ui-sref="logout" id="login_btn">LogOut</a></li>
 </nav>
 <!-- MAIN CONTENT -->
     <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
@@ -47,6 +47,7 @@
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-ui-router-styles/ui-router-styles.js"></script>
+    <script src="/bower_components/angular-cookies/angular-cookies.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -55,8 +56,10 @@
     <script src="scripts/controllers/homeCTRL.js"></script>
     <script src="scripts/controllers/loginCTRL.js"></script>
     <script src="scripts/controllers/homepageCTRL.js"></script>
+    <script src="scripts/controllers/logoutCTRL.js"></script>
     <script src="scripts/hide.js"></script>
     <script src="scripts/services/services.js"></script>
+
         <!-- endbuild -->
     </body>
 </html>

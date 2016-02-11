@@ -5,6 +5,7 @@ var routerApp = angular.module('routerApp', [
     'Login.services',
     'ngAnimate',
     'ui.bootstrap',
+    'ngCookies',
     ]);
 
 routerApp.config(function($stateProvider, $urlRouterProvider) {
@@ -18,8 +19,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider) {
             controller: 'loginCTRL',
         })
         .state('homepage', {
-            url: '/homepage',
+            url: '/#',
             templateUrl: '../views/homepage.html',
             controller: 'homepageCTRL',
+        })
+        .state('logout', {
+            url: '/#',
+            //template: '<h1>BYE<h1>',
+            controller: 'logoutCTRL',
         })
 });

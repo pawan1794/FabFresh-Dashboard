@@ -2,38 +2,41 @@
   <div class="box">
     <div class="container-1">
 
-        <input type="search" id="search" ng-model="nameFilter" placeholder="Enter OrderId"/>
-        <!-- <label>PICKUP</label> -->
-        <div id="label_checkbox">
-          <label>Pickup
+      <input type="search" id="search" ng-model="nameFilter" placeholder="Enter OrderId"/>
+
+      <div id="label_checkbox">
+        <label>Pickup
           <input id="checkbox1" type="checkbox" ng-model="nameFilter1" value="PickUp" checked/>
-          </label>
-          <br>
-          <label>Drop
+        </label><br>
+        <label>Drop
           <input id="checkbox2" type="checkbox" ng-model="nameFilter2" value="Drop" checked>
         </label>
-        </div>
+      </div>
     </div>
   </div>
 
   <div id="orders_list">
-    <div id="orders" ng-repeat="x in data  | filter: searchFilter |filter: searchFilter1" ng-click="open(x)">
-      <div id="order_id" style="background-color: {{getColor(x.created_at_time)}}">
-        <h2  style="color:white;" >#{{x.id}}</h2>
+    <div id="orders" ng-repeat="x in data  | filter: searchFilter |filter: searchFilter1" >
+      <div id="menu" ng-click="open(x)">
+        <div id="order_id" style="background-color: {{getColor(x.created_at_time)}}">
+          <h2  style="color:white;" >#{{x.id}}</h2>
+        </div>
+        <div id="order_description">
+          <p style="color:black;">
+            Email:{{x.owner.email}}<br>
+            Username:{{x.owner.username}}<br>
+            Mobile:{{x.owner.UserInfo.phone}}<br>
+            Coupon Applied:{{x.coupon}}<br>
+            Created at:{{x.created_at_time}}<br>
+            Modified at:{{x.modified_at_time}}<br>
+          </p>
+        </div>
+        <div id="order_status" style="background-color: {{stringToColor(x.clr)}}">
+          <h4 style="color:white;">{{x.status}}</h4>
+        </div>
       </div>
-      <div id="order_description">
-        <p style="color:black;">
-          Email:{{x.owner.email}}<br>
-          Username:{{x.owner.username}}<br>
-          Mobile:{{x.owner.UserInfo.phone}}<br>
-          Created at:{{x.created_at_time}}<br>
-          Modified at:{{x.modified_at_time}}<br>
-          <!-- <a class="link_class" ui-sref="homepage.order_details"><span>Orders..?</span></a> -->
-
-        </p>
-      </div>
-      <div id="order_status" style="background-color: {{stringToColor(x.clr)}}">
-        <h4 style="color:white;">{{x.status}}</h4>
+      <div style="background-color: {{stringToColor(x.clr)}};" id="cancel_order" >
+          <a  style="margin-left:60px;" href ng-click="cancel_order(x,'sm')">{{x.update}}</a>
       </div>
     </div>
   </div>
