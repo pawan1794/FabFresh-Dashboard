@@ -7,9 +7,14 @@
 
 
 .nav {
-    float: right;
-    margin: 20px 30px;
+    width:100%;
 }
+
+#login_btn,#logout_btn{
+   float: right;
+   margin: 20px 30px;
+}
+
 
 
 input {
@@ -29,6 +34,7 @@ input:focus {
 
 body {
   //background-image: url("http://www.cortlandasc.com/cmsimages/colorful_socks_in_a_laundry_basket.jpg");
+  background: url('https://static.pexels.com/wp-content/uploads/2014/06/black-and-white-moored-buoy-ocean-1465.jpg') no-repeat center center;
   font-family: 'Roboto';
   height: 100vh;
   width: inherit;
@@ -94,3 +100,14 @@ th,td {
 }
 
 
+#header {
+  width: 90%;
+  height: 100px;
+  float: top;
+  background-image: url('/images/fabfresh.png');
+  background-size: 400px 80px;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-color: white;
+  margin-top: -60px;
+}

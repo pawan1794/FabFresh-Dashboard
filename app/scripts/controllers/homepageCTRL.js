@@ -59,8 +59,14 @@ routerApp
           //colour["12"] = "#000000";
 
           var data1=[];
+          data.pickup_count=0;
+          data.drop_count=0;
           for(var i=0;i<data.length;i++){
             if(data[i].status==2 || data[i].status==11){
+              if(data[i].status==2)
+                data.pickup_count+=1;
+              else
+                data.drop_count+=1;
               data[i].update=update1[data[i].status]; 
               data[i].clr=colour[data[i].status];
               data[i].order_type=type[data[i].order_type];
@@ -81,6 +87,8 @@ routerApp
                  data1.push(data[i]);
             }
           }
+          data1.pickup_count=data.pickup_count;
+          data1.drop_count=data.drop_count;
           $scope.data=data1;
 
         }
