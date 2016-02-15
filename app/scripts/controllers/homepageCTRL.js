@@ -10,7 +10,7 @@ routerApp
     $http({
       method  : 'GET',
       url     : URL+'/order/live/',
-      headers : {'Authorization': 'Bearer '+$cookieStore.get('key')}//$rootScope.access_token} 
+      headers : {'Authorization': 'Bearer '+'hari'}//$cookieStore.get('key')}//$rootScope.access_token} 
      })
       .success(function(data) {
         if (data.errors) {
@@ -24,19 +24,19 @@ routerApp
           type["2"] = "Wash and Iron";
 
           var type1 = {};
-          //type1["0"] = "cancelled";
-          //type1["1"] = "created";
+          type1["0"] = "cancelled";
+          type1["1"] = "created";
           type1["2"] = "pickup";
-          //type1["3"] = "receivedAtCenter";
-          //type1["4"] = "precheck";
-          //type1["5"] = "tagging";
-          //type1["6"] = "wash";
-          //type1["7"] = "dry";
-          //type1["8"] = "iron";
-          //type1["9"] = "package";
-          //type1["10"] = "shipped";
+          type1["3"] = "receivedAtCenter";
+          type1["4"] = "precheck";
+          type1["5"] = "tagging";
+          type1["6"] = "wash";
+          type1["7"] = "dry";
+          type1["8"] = "iron";
+          type1["9"] = "package";
+          type1["10"] = "shipped";
           type1["11"] = "drop";
-          //type1["12"] = "completed";
+          type1["12"] = "completed";
 
 
           var update1 = {};
@@ -44,64 +44,91 @@ routerApp
           update1["11"] = "Update Order..?";
 
           var colour = {};
-          //colour["0"] = "#000000";
-          //colour["1"] = "#987654";
+          colour["0"] = "#6D9F38";
+          colour["1"] = "#987654";
           colour["2"] = "#9FCCFF";
-          //colour["3"] = "#EA3865";
-          //colour["4"] = "#F3A718";
-          //colour["5"] = "#73D1F3";
-          //colour["6"] = "#DFA938";
-          //colour["7"] = "#83FCB1";
-          //colour["8"] = "#29C3BA";
-          //colour["9"] = "#BC4532";
-          //colour["10"] = "#A49340";
+          colour["3"] = "#EA3865";
+          colour["4"] = "#F3A718";
+          colour["5"] = "#73D1F3";
+          colour["6"] = "#DFA938";
+          colour["7"] = "#83FCB1";
+          colour["8"] = "#29C3BA";
+          colour["9"] = "#BC4532";
+          colour["10"] = "#A49340";
           colour["11"] = "#6AB97F";
-          //colour["12"] = "#000000";
+          colour["12"] = "#9BA49C";
 
           var data1=[];
           data.pickup_count=0;
           data.drop_count=0;
+          data.all_count=0;
+          console.log(data[0].created_at_time);
           for(var i=0;i<data.length;i++){
-            if(data[i].status==2 || data[i].status==11){
-              if(data[i].status==2)
+              if(data[i].status==2){
                 data.pickup_count+=1;
-              else
+                data[i].status1="pickup_drop";
+              }
+              else if(data[i].status==11){
                 data.drop_count+=1;
+                data[i].status1="pickup_drop";
+              }
+              else
+                data[i].status1="other";
+              data.all_count+=1;
               data[i].update=update1[data[i].status]; 
               data[i].clr=colour[data[i].status];
               data[i].order_type=type[data[i].order_type];
               data[i].status=type1[data[i].status];
               var str=data[i].created_at_time;
-              data[i].created_at_time=str.substring(11, 16)+", "+str.substring(0, 10);
+              data[i].created_at_time=str.substring(11, 16)+", "+str.substring(8, 10)+'-'+ str.substring(5, 7) +'-'+str.substring(0, 4);
               str=data[i].modified_at_time;
               if(!data[i].coupon)
                 data[i].coupon="NA";
               if(!str)
-                data[i].modified_at_time="Never";
+                data[i].modified_at_time=data[i].created_at_time;
               else
-                data[i].modified_at_time=str.substring(11, 16)+", "+str.substring(0, 10);
+                data[i].modified_at_time=str.substring(11, 16)+", "+str.substring(8, 10)+'-'+ str.substring(5, 7) +'-'+str.substring(0, 4);
               if(data[i].afterDiscount==null)
                    data[i].afterDiscount=0;
               if(data[i].coupon==null)
                    data[i].coupon="NA";
                  data1.push(data[i]);
-            }
+            //}
           }
+          console.log(data[0].created_at_time);
+          var d=parseDate(data[0].created_at_time);
+          console.log(d);
+          var d1=new Date();
+          console.log(d1);
           data1.pickup_count=data.pickup_count;
           data1.drop_count=data.drop_count;
+          data1.all_count=data.all_count;
           $scope.data=data1;
 
         }
       });
+
+      function parseDate(str) {
+        var input=str.split(',');
+        var part = input[0].split(':');
+        var parts = input[1].split('-');
+        return new Date(parts[2], parts[1]-1, parts[0],part[0],part[1]); 
+      }
+
       $scope.nameFilter1=true;
       $scope.nameFilter2=true;
+      $scope.nameFilter3=false;
       $scope.searchFilter = function (x) {
         var re = new RegExp($scope.nameFilter, 'i');
         return !$scope.nameFilter || re.test(x.id) ;
       };
       $scope.searchFilter1 = function (x) {
-        if($scope.nameFilter1==undefined  || ( $scope.nameFilter1 && $scope.nameFilter2))
+        if($scope.nameFilter3)
           return true;
+        if( $scope.nameFilter1 && $scope.nameFilter2){
+          var re = new RegExp("pickup_drop", 'i');
+          return re.test(x.status1) ;
+        }
         if( !$scope.nameFilter1 && !$scope.nameFilter2)
           return false;
         if($scope.nameFilter1)
@@ -115,6 +142,17 @@ routerApp
         return str;
       };
       
+      $scope.searchFilter2 = function(prop){
+        //alert($scope.from);
+        return function(){
+          if($scope.from<parseDate($scope.data[prop].created_at_time) && parseDate($scope.data[prop].created_at_time)<$scope.to)
+              return true;
+            else
+              return false;
+          //return $scope.from<parseDate(item[prop].created_at_time)<$scope.to;
+          //return item[prop] > val;
+        }
+      }
 
       $scope.getColor = function(str) {
         var date=new Date();

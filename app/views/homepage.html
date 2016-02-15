@@ -10,20 +10,24 @@
         </label><br>
         <label>Drop
           <input id="checkbox2" type="checkbox" ng-model="nameFilter2" value="Drop" checked>
+        </label><br>
+        <label>All
+          <input id="checkbox3" type="checkbox" ng-model="nameFilter3" value="All" checked>
         </label>
       </div>
+       
     </div>
     <div style="margin-top: 6px; margin-right:300px;float:right;">
         <label>PickUp:{{data.pickup_count}}</label><br>
         <label>Drop:{{data.drop_count}}</label><br>
+        <label>All:{{data.all_count}}</label><br>
       </div>
   </div>
-
 
   <div id="orders_list">
     <div id="orders" ng-repeat="x in data  | filter: searchFilter |filter: searchFilter1" >
       <div id="menu" ng-click="open(x)">
-        <div id="order_id" style="background-color: {{getColor(x.created_at_time)}}">
+        <div id="order_id" style="background-color: {{x.modified_at_time}}">
           <h2  style="color:white;" >#{{x.id}}</h2>
         </div>
         <div id="order_description">
