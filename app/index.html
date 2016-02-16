@@ -2,9 +2,12 @@
 <html>
 <head>
 
+
+    
+
     <script src="bower_components/angular/angular.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 
 
     <link rel="stylesheet" href="styles/users.css">
@@ -23,7 +26,6 @@
 
      <meta charset="utf-8">
     <title>Fabfresh</title>    
-      
 </head>
 
 
@@ -32,9 +34,14 @@
     <li ng-hide="getFlag()"><a  ui-sref="login" id="login_btn">Login</a></li>
     <li ng-show="getFlag()"><a  ui-sref="logout" id="logout_btn">Logout</a></li>
 </nav>
+
+
+
+
 <!-- MAIN CONTENT -->
     <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
 <div id="Main">
+
 
 <div id="ui_view" ui-view></div>
 </div>
@@ -47,9 +54,14 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/jquery-timepicker-jt/jquery.timepicker.js"></script>
+    <script src="bower_components/angular-jquery-timepicker/src/timepickerdirective.js"></script>
+    <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
+    
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/homeCTRL.js"></script>

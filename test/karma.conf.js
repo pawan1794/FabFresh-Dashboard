@@ -30,6 +30,9 @@ module.exports = function(config) {
       'bower_components/angular-animate/angular-animate.js',
       'bower_components/angular-cookies/angular-cookies.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
+      'bower_components/jquery-timepicker-jt/jquery.timepicker.js',
+      'bower_components/angular-jquery-timepicker/src/timepickerdirective.js',
+      'bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       "app/scripts/**/*.js",

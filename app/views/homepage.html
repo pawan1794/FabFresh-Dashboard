@@ -1,7 +1,14 @@
 <div id="order">
+  <div>
+    <form   ng-submit="do()">
+      <p style="width:200px;">From: <input type="date" id="date_from" ng-model="from"/></p>
+      <p style="width:200px;;" >To: <input type="date" id="date_to" ng-model="to"/></p>
+      <p ng-show="do()"></p>
+    </form>
+  </div>
   <div class="box">
     <div class="container-1">
- 
+
       <input type="search" id="search" ng-model="nameFilter" placeholder="Enter OrderId"/>
 
       <div id="label_checkbox">
@@ -25,7 +32,7 @@
   </div>
 
   <div id="orders_list">
-    <div id="orders" ng-repeat="x in data  | filter: searchFilter |filter: searchFilter1" >
+    <div id="orders" ng-repeat="x in data  | filter: searchFilter |filter: searchFilter1 |filter: searchFilter2" >
       <div id="menu" ng-click="open(x)">
         <div id="order_id" style="background-color: {{x.modified_at_time}}">
           <h2  style="color:white;" >#{{x.id}}</h2>
@@ -39,13 +46,16 @@
             Created at:{{x.created_at_time}}<br>
             Modified at:{{x.modified_at_time}}<br>
           </p>
+          
         </div>
         <div id="order_status" style="background-color: {{stringToColor(x.clr)}}">
           <h4 style="color:white;">{{x.status}}</h4>
         </div>
       </div>
       <div style="background-color: {{stringToColor(x.clr)}};" id="cancel_order" >
-          <a  style="margin-left:60px;" href ng-click="cancel_order(x,'sm')">{{x.update}}</a>
+          <a  style="margin-left:60px;" href ng-click="update_order(x,'sm')">{{x.update}}</a>
+          <a  ng-show="if_created(x)" style="margin-left:60px;" href ng-click="update_order(x,'sm')">Update Order..?</a>
+          
       </div>
     </div>
   </div>
