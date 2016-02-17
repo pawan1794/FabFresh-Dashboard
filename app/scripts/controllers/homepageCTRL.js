@@ -10,7 +10,7 @@ routerApp
     $http({
       method  : 'GET',
       url     : URL+'/order/live/',
-      headers : {'Authorization': 'Bearer '+'hari'}//$cookieStore.get('key')}//$rootScope.access_token} 
+      headers : {'Authorization': 'Bearer '+$cookieStore.get('key')}//$rootScope.access_token} 
      })
       .success(function(data) {
         if (data.errors) {
@@ -46,7 +46,7 @@ routerApp
 
           var colour = {};
           colour["0"] = "#6D9F38";
-          colour["1"] = "#2CA85A";
+          colour["1"] = "#CADFBE";
           colour["2"] = "#9FCCFF";
           colour["3"] = "#EA3865";
           colour["4"] = "#F3A718";
@@ -63,7 +63,6 @@ routerApp
           data.pickup_count=0;
           data.drop_count=0;
           data.all_count=0;
-          console.log(data[0].created_at_time);
           for(var i=0;i<data.length;i++){
               if(data[i].status==2){
                 data.pickup_count+=1;
@@ -121,12 +120,14 @@ routerApp
       };
 
     
-      $scope.from=parseDate("00:00, 16-02-2016");
+      $scope.from=parseDate("00:00, 01-01-2016");
       $scope.to=new Date();
+      $scope.to.setHours('0');
+      $scope.to.setMinutes('0');
+      $scope.to.setSeconds('0');
 
-      $scope.do = function () {
-        $scope.to.setDate($scope.to.getDate()+1);
-      };
+
+      //console.log($scope.to);
       $scope.searchFilter1 = function (x) {
         if($scope.nameFilter3)
           return true;
@@ -149,7 +150,8 @@ routerApp
 
       $scope.searchFilter2 = function (x) {
           var d=new Date();
-           if( parseDate(x.created_at_time) >= $scope.from && parseDate(x.created_at_time) <= d.setDate($scope.to.getDate()+1))
+          d.setDate($scope.to.getDate()+1)
+           if( parseDate(x.created_at_time) >= $scope.from && parseDate(x.created_at_time) <= d)
                return true;
            else
               return false;
@@ -339,7 +341,6 @@ routerApp
   $scope.data=x;
   var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
   $scope.ok = function () {
-    alert("saasd");
     $scope.order = {
         "status" : "2"
     };

@@ -49,6 +49,7 @@
   width:200px;
   height: 220px;
   padding:20px;
+  word-wrap:break-word;
 
 }
 #order_status{
