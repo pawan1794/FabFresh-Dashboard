@@ -6,7 +6,7 @@ routerApp
     $scope.user = [];
     $scope.nameFilter = null;
     $scope.ordersList = [];
-    var URL = 'http://fabfresh.elasticbeanstalk.com';
+    var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
     $http({
       method  : 'GET',
       url     : URL+'/order/live/',
@@ -214,7 +214,8 @@ routerApp
         };
 
       $scope.update_order = function (x,size) {
-          if(x.status=='pickup'){
+          if(x.status=='pickup' || x.status=='created'){
+            //alert("dasdasd");
             var modalInstance1 = $uibModal.open({
               templateUrl: 'views/cancel_order.html',
               controller: 'ModalInstanceCtrl1',
@@ -238,7 +239,10 @@ routerApp
               }
             });
           }
-          else{
+      };
+
+      $scope.update_order1 = function (x,size) {
+          if(x.status=='created'){
             var modalInstance1 = $uibModal.open({
               templateUrl: 'views/update_to_pickup.html',
               controller: 'ModalInstanceCtrl3',
@@ -273,11 +277,11 @@ routerApp
 
 .controller('ModalInstanceCtrl1', function ($cookies,$state,$http,$scope,$uibModalInstance, x) {
   $scope.data=x;
-  var URL = 'http://fabfresh.elasticbeanstalk.com';
+  var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
   $scope.ok = function () {
-    console.log($cookieStore.get('key'));
     $scope.order = {
-        "status": "0"
+        "status": "0",
+        "remark" : $scope.remarks
     };
     $http({
       method  : 'PATCH',
@@ -295,6 +299,7 @@ routerApp
         }
       });
       $uibModalInstance.close("");
+      $uibModalInstance.dismiss('cancel');
   };
 
   $scope.cancel = function () {
@@ -306,7 +311,7 @@ routerApp
 
 .controller('ModalInstanceCtrl2', function ($cookies,$state,$http,$scope,$uibModalInstance, x) {
   $scope.data=x;
-  var URL = 'http://fabfresh.elasticbeanstalk.com';
+  var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
   $scope.ok = function () {
     $scope.order = {
         "status": "12"
@@ -339,7 +344,7 @@ routerApp
 .controller('ModalInstanceCtrl3', function ($cookies,$state,$http,$scope,$uibModalInstance, x) {
 
   $scope.data=x;
-  var URL = 'http://fabfresh.elasticbeanstalk.com';
+  var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
   $scope.ok = function () {
     $scope.order = {
         "status" : "2"

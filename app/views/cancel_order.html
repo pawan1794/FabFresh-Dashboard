@@ -1,7 +1,16 @@
 <div class="modal-header">
 	<h4 class="modal-title">Do you really want to cancel the order?</h4>
 </div>
-<div class="modal-footer">
-	<button class="btn btn-primary" type="button" ng-click="ok()">OK</button><br><br>
-	<button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+<div class="modal-body">
+	<form ng-submit="ok()">
+	  <div >
+	  	<label>Remarks</label>
+	    <input type="text" id="sample" ng-model='remarks'/><br><br>
+	  </div>
+	  <button class="btn btn-primary" type="submit">OK</button><br><br>
+	  <button class="btn btn-warning" type="button" ng-click="cancel()">Cancel</button>
+	</form>
 </div>
+<!-- <div class="modal-footer">
+	
+</div> -->

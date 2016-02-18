@@ -5,7 +5,7 @@ routerApp
   .controller('loginCTRL', function($cookies, $rootScope,$scope, $http, $state) {
     $scope.user = [];
     
-    var URL = 'http://fabfresh.elasticbeanstalk.com';
+    var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
     $scope.submitForm = function() {
       $scope.user = {
         "username": $scope.login.email,
