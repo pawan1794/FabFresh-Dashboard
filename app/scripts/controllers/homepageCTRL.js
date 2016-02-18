@@ -6,7 +6,7 @@ routerApp
     $scope.user = [];
     $scope.nameFilter = null;
     $scope.ordersList = [];
-    var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
+    var URL = 'http://fabfresh.elasticbeanstalk.com';
     $http({
       method  : 'GET',
       url     : URL+'/order/live/',
@@ -273,7 +273,7 @@ routerApp
 
 .controller('ModalInstanceCtrl1', function ($cookieStore,$state,$http,$scope,$uibModalInstance, x) {
   $scope.data=x;
-  var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
+  var URL = 'http://fabfresh.elasticbeanstalk.com';
   $scope.ok = function () {
     console.log($cookieStore.get('key'));
     $scope.order = {
@@ -306,7 +306,7 @@ routerApp
 
 .controller('ModalInstanceCtrl2', function ($cookieStore,$state,$http,$scope,$uibModalInstance, x) {
   $scope.data=x;
-  var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
+  var URL = 'http://fabfresh.elasticbeanstalk.com';
   $scope.ok = function () {
     $scope.order = {
         "status": "12"
@@ -339,7 +339,7 @@ routerApp
 .controller('ModalInstanceCtrl3', function ($cookieStore,$state,$http,$scope,$uibModalInstance, x) {
 
   $scope.data=x;
-  var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
+  var URL = 'http://fabfresh.elasticbeanstalk.com';
   $scope.ok = function () {
     $scope.order = {
         "status" : "2"

@@ -4,6 +4,11 @@
 		<h2 class="modal-title">Order Details</h2>
 	</div>
 	<div class="modal-body" >
+		<h5>Username:{{data.owner.username}}<br><h5>
+		<h5>Mobile:{{data.owner.UserInfo.phone}}<br></h5>
+		<h4>Created at:{{data.created_at_time}}</h4><br>
+        <h4>Modified at:{{data.modified_at_time}}</h4><br>
+
 		<h4>Address</h4>
 
 		<div class="table-responsive">   
@@ -21,12 +26,13 @@
 
 				<tbody>
 					<tr ng-repeat="x in data.owner.UserProfile" >
+
 					    <td>{{x.address}}</td>
 					    <td>{{x.addressLocality}}</td>
 					    <td>{{x.addressSubLocality}}</td>
 					    <td>{{x.postalcode}}</td>
 					    <td>{{x.addressLatitude}}</td>
-					    <td>{{x.addressLongitude}}</td>
+					    <td>{{x.addressLogitude}}</td>
 		  			</tr>
 				</tbody>
 			</table>

@@ -4,6 +4,8 @@
 
 }
 
+
+
 #ui_view {
     height:inherit;
     width:100%;
@@ -111,4 +113,8 @@ transition: background .55s ease;
 #cancel_order{
   border-bottom-left-radius: 15px;
   border-bottom-right-radius: 15px;
+}
+#login_btn,#logout_btn{
+   float: right;
+   margin: 20px 30px;
 }
