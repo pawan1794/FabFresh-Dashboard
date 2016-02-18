@@ -33,7 +33,7 @@
   <div id="orders_list">
     <div id="orders" ng-repeat="x in data  | filter: searchFilter |filter: searchFilter1 |filter: searchFilter2" >
       <div id="menu" ng-click="open(x)">
-        <div id="order_id" style="background-color: {{x.modified_at_time}}">
+        <div id="order_id" style="background-color: {{getColor(x.modified_at_time)}};">
           <h2  style="color:white;" >#{{x.id}}</h2>
         </div>
         <div id="order_description">

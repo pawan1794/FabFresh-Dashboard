@@ -2,8 +2,8 @@
 
 
 routerApp
-  .controller('homeCTRL', function($state,$cookieStore,$http, $rootScope,$scope) {
-  		var c = $cookieStore.get('key');
+  .controller('homeCTRL', function($state,$cookies,$http, $rootScope,$scope) {
+  		var c = $cookies.get('key');
   		$scope.getFlag = function() {
   			return $rootScope.otp_flag;
   		}

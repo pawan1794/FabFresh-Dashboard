@@ -2,9 +2,9 @@
 <html>
 <head>
 
-
-    
-
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.4/material.teal-pink.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
     <script src="bower_components/angular/angular.js"></script>
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
@@ -30,20 +30,59 @@
 
 
 <body ng-app="routerApp" ng-controller="homeCTRL">
-<nav  class="nav" >
-    <li ng-hide="getFlag()"><a  ui-sref="login" id="login_btn">Login</a></li>
-    <li ng-show="getFlag()"><a  ui-sref="logout" id="logout_btn">Logout</a></li>
-</nav>
-
-
-
 
 <!-- MAIN CONTENT -->
     <!-- THIS IS WHERE WE WILL INJECT OUR CONTENT ============================== -->
 <div id="Main">
 
+<!--
+<div ng-show="otp_flag" id="sidebar">
+    <ul>
+      <li><a ui-sref="homepage">Address</a></li>
+      <li><a ui-sref="address_list">Address List</a></li>
+      <li><a ui-sref="orders">Orders</a></li>
+      <li><a ui-sref="place_order">Placeorder</a></li>
+      <li><a ui-sref="profiles">About</a></li>
+      <li><a ui-sref="Logout">Logout</a></li>
+    </ul>
+</div>
+-->
+     <!-- Always shows a header, even in smaller screens. -->
+     <!-- Always shows a header, even in smaller screens. -->
 
-<div id="ui_view" ui-view></div>
+    <div  class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+      <header style="position: fixed; background-color: #111" class="mdl-layout__header">
+        <div class="mdl-layout__header-row">
+          <!-- Title -->
+          <span class="mdl-layout-title">FabFresh</span>
+          <!-- Add spacer, to align navigation to the right -->
+          <div class="mdl-layout-spacer"></div>
+
+          <li ng-hide="otp_flag"><a  ui-sref="login" id="login_btn" class="btn">Login</a></li>
+          <!-- Navigation. We hide it in small screens. -->
+
+        </div>
+      </header>
+      <div class="mdl-layout__drawer">
+        <span class="mdl-layout-title">FabFresh</span>
+        <nav class="mdl-navigation">
+          <!-- <a class="mdl-navigation__link" href="">View Orders</a>
+          <a class="mdl-navigation__link" href="">Account Settings</a>
+          <a class="mdl-navigation__link" href="">Pricing Agreements</a> -->
+
+              <a class="mdl-navigation__link" ui-sref="homepage">Customer Service</a>
+              <a class="mdl-navigation__link" ui-sref="logout">Logout</a>
+
+        </nav>
+      </div>
+
+      <main class="mdl-layout__content">
+            <div id="container1" ui-view></div>
+
+      </main>
+    </div>
+
+
 </div>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
@@ -57,6 +96,8 @@
     <script src="bower_components/jquery-timepicker-jt/jquery.timepicker.js"></script>
     <script src="bower_components/angular-jquery-timepicker/src/timepickerdirective.js"></script>
     <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.min.js"></script>
+    <script src="bower_components/material-design-lite/material.js"></script>
+    <script src="bower_components/material-design-lite/material.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

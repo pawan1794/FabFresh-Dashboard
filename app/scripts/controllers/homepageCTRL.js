@@ -2,7 +2,7 @@
 
 
 routerApp
-  .controller('homepageCTRL', function( $cookieStore,$uibModal, $rootScope,$scope, $http) {
+  .controller('homepageCTRL', function( $cookies,$uibModal, $rootScope,$scope, $http) {
     $scope.user = [];
     $scope.nameFilter = null;
     $scope.ordersList = [];
@@ -10,7 +10,7 @@ routerApp
     $http({
       method  : 'GET',
       url     : URL+'/order/live/',
-      headers : {'Authorization': 'Bearer '+$cookieStore.get('key')}//$rootScope.access_token} 
+      headers : {'Authorization': 'Bearer '+$cookies.get('key')}//$rootScope.access_token} 
      })
       .success(function(data) {
         if (data.errors) {
@@ -271,7 +271,7 @@ routerApp
 })
 
 
-.controller('ModalInstanceCtrl1', function ($cookieStore,$state,$http,$scope,$uibModalInstance, x) {
+.controller('ModalInstanceCtrl1', function ($cookies,$state,$http,$scope,$uibModalInstance, x) {
   $scope.data=x;
   var URL = 'http://fabfresh.elasticbeanstalk.com';
   $scope.ok = function () {
@@ -283,7 +283,7 @@ routerApp
       method  : 'PATCH',
       url     : URL+'/orders/'+x.id+'/',
       data    : $scope.order,
-      headers : {'Content-Type': 'application/json', 'Authorization': 'Bearer '+$cookieStore.get('key')}//$rootScope.access_token} } 
+      headers : {'Content-Type': 'application/json', 'Authorization': 'Bearer '+$cookies.get('key')}//$rootScope.access_token} } 
      })
       .success(function(data) {
         if (data.errors) {
@@ -304,7 +304,7 @@ routerApp
 
 
 
-.controller('ModalInstanceCtrl2', function ($cookieStore,$state,$http,$scope,$uibModalInstance, x) {
+.controller('ModalInstanceCtrl2', function ($cookies,$state,$http,$scope,$uibModalInstance, x) {
   $scope.data=x;
   var URL = 'http://fabfresh.elasticbeanstalk.com';
   $scope.ok = function () {
@@ -315,7 +315,7 @@ routerApp
       method  : 'PATCH',
       url     : URL+'/orders/'+x.id+'/',
       data    : $scope.order,
-      headers : {'Content-Type': 'application/json', 'Authorization': 'Bearer '+$cookieStore.get('key')}//$rootScope.access_token} } 
+      headers : {'Content-Type': 'application/json', 'Authorization': 'Bearer '+$cookies.get('key')}//$rootScope.access_token} } 
      })
       .success(function(data) {
         if (data.errors) {
@@ -336,7 +336,7 @@ routerApp
 
 
 
-.controller('ModalInstanceCtrl3', function ($cookieStore,$state,$http,$scope,$uibModalInstance, x) {
+.controller('ModalInstanceCtrl3', function ($cookies,$state,$http,$scope,$uibModalInstance, x) {
 
   $scope.data=x;
   var URL = 'http://fabfresh.elasticbeanstalk.com';
@@ -348,7 +348,7 @@ routerApp
       method  : 'PATCH',
       url     : URL+'/orders/'+x.id+'/',
       data    : $scope.order,
-      headers : {'Content-Type': 'application/json', 'Authorization': 'Bearer '+$cookieStore.get('key')}//$rootScope.access_token} } 
+      headers : {'Content-Type': 'application/json', 'Authorization': 'Bearer '+$cookies.get('key')}//$rootScope.access_token} } 
      })
       .success(function(data) {
         if (data.errors) {
