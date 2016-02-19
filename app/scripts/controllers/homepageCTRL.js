@@ -6,11 +6,11 @@ routerApp
     $scope.user = [];
     $scope.nameFilter = null;
     $scope.ordersList = [];
-    var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
+    var URL = 'http://fabfresh.elasticbeanstalk.com';
     $http({
       method  : 'GET',
       url     : URL+'/order/live/',
-      headers : {'Authorization': 'Bearer '+$cookies.get('key')}//$rootScope.access_token} 
+      headers : {'Authorization': 'Bearer '+$cookies.get('key')}
      })
       .success(function(data) {
         if (data.errors) {
@@ -24,58 +24,31 @@ routerApp
           type["2"] = "Wash and Iron";
 
           var type1 = {};
-          type1["0"] = "cancelled";
           type1["1"] = "created";
           type1["2"] = "pickup";
-          type1["3"] = "receivedAtCenter";
-          type1["4"] = "precheck";
-          type1["5"] = "tagging";
-          type1["6"] = "wash";
-          type1["7"] = "dry";
-          type1["8"] = "iron";
-          type1["9"] = "package";
-          type1["10"] = "shipped";
           type1["11"] = "drop";
-          type1["12"] = "completed";
 
 
-          var update1 = {};
-          update1["1"] = "Cancel Order..?";
-          update1["2"] = "Cancel Order..?";
-          update1["11"] = "Update Order..?";
+          var update2 = {};
+          update2["1"] = "Reassign..?";
+          update2["11"] = "Reassign..?";
 
           var colour = {};
-          colour["0"] = "#6D9F38";
           colour["1"] = "#CADFBE";
           colour["2"] = "#9FCCFF";
-          colour["3"] = "#EA3865";
-          colour["4"] = "#F3A718";
-          colour["5"] = "#73D1F3";
-          colour["6"] = "#DFA938";
-          colour["7"] = "#83FCB1";
-          colour["8"] = "#29C3BA";
-          colour["9"] = "#BC4532";
-          colour["10"] = "#A49340";
           colour["11"] = "#6AB97F";
-          colour["12"] = "#9BA49C";
 
           var data1=[];
           data.pickup_count=0;
           data.drop_count=0;
           data.all_count=0;
           for(var i=0;i<data.length;i++){
-              if(data[i].status==2){
+              if(data[i].status==2 || data[i].status==1)
                 data.pickup_count+=1;
-                data[i].status1="pickup_drop";
-              }
-              else if(data[i].status==11){
+              else if(data[i].status==11)
                 data.drop_count+=1;
-                data[i].status1="pickup_drop";
-              }
-              else
-                data[i].status1="other";
               data.all_count+=1;
-              data[i].update=update1[data[i].status]; 
+              data[i].reassign=update2[data[i].status]; 
               data[i].clr=colour[data[i].status];
               data[i].order_type=type[data[i].order_type];
               data[i].status=type1[data[i].status];
@@ -91,9 +64,8 @@ routerApp
               if(data[i].afterDiscount==null)
                    data[i].afterDiscount=0;
               if(data[i].coupon==null)
-                   data[i].coupon="NA";
-                 data1.push(data[i]);
-            //}
+                data[i].coupon="NA";
+                data1.push(data[i]);
           }
           
           data1.pickup_count=data.pickup_count;
@@ -126,26 +98,20 @@ routerApp
       $scope.to.setMinutes('0');
       $scope.to.setSeconds('0');
 
-
-      //console.log($scope.to);
       $scope.searchFilter1 = function (x) {
-        if($scope.nameFilter3)
+        if( $scope.nameFilter3)
           return true;
-        if( $scope.nameFilter1 && $scope.nameFilter2){
-          var re = new RegExp("pickup_drop", 'i');
-          return re.test(x.status1) ;
-        }
         if( !$scope.nameFilter1 && !$scope.nameFilter2)
           return false;
-        
-        if($scope.nameFilter1){
-          var re = new RegExp("pickup", 'i');
-          var re1 = new RegExp("created", 'i');
+        if( $scope.nameFilter1 && $scope.nameFilter2)
+          return true;
+        var re = new RegExp("pickup", 'i');
+        var re1 = new RegExp("created", 'i');
+        var re2= new RegExp("drop", 'i');
+        if($scope.nameFilter1)
           return re.test(x.status) || re1.test(x.status);
-        }
         else
-          var re = new RegExp("drop", 'i');
-        return re.test(x.status) ;
+          return re2.test(x.status) ;
       };
 
       $scope.searchFilter2 = function (x) {
@@ -161,9 +127,9 @@ routerApp
         return str;
       };
       
-      //$scope.from=parseDate("00:00, 01-02-2016");
-      //$scope.to=new Date();
+      
       $scope.getColor = function(str) {
+        //alert(str);
         var date=new Date();
         var hours=parseInt(str.substring(0,2));
         var minutes=parseInt(str.substring(3,5));
@@ -200,7 +166,10 @@ routerApp
       }
 
       $scope.open = function (x) {
-        //alert(x.id);
+        if($scope.p==1){
+          $scope.p=0;
+          return;
+        }
         
         var modalInstance = $uibModal.open({
           templateUrl: 'views/order_details.html',
@@ -211,13 +180,12 @@ routerApp
                 }
               }
             });
-        };
+      };
+
 
       $scope.update_order = function (x,size) {
-          if(x.status=='pickup' || x.status=='created'){
-            //alert("dasdasd");
             var modalInstance1 = $uibModal.open({
-              templateUrl: 'views/cancel_order.html',
+              templateUrl: 'views/modify_order.html',
               controller: 'ModalInstanceCtrl1',
               size: size,
               resolve: {
@@ -226,26 +194,18 @@ routerApp
                   }
               }
             });
-          }
-          else if(x.status=='drop'){
-            var modalInstance1 = $uibModal.open({
-              templateUrl: 'views/update_order.html',
-              controller: 'ModalInstanceCtrl2',
-              size: size,
-              resolve: {
-                  x: function () {
-                    return x;
-                  }
-              }
-            });
-          }
       };
 
-      $scope.update_order1 = function (x,size) {
-          if(x.status=='created'){
+      
+      $scope.reassign = function (x,size) {
+            $scope.p=1;
+            if(x.status=='created')
+              x.chr='p';
+            else if(x.status=='drop')
+              x.chr='d';
             var modalInstance1 = $uibModal.open({
-              templateUrl: 'views/update_to_pickup.html',
-              controller: 'ModalInstanceCtrl3',
+              templateUrl: 'views/reassign.html',
+              controller: 'ModalInstanceCtrl4',
               size: size,
               resolve: {
                   x: function () {
@@ -253,7 +213,6 @@ routerApp
                   }
               }
             });
-          }
       };
 })
 
@@ -275,9 +234,61 @@ routerApp
 })
 
 
-.controller('ModalInstanceCtrl1', function ($cookies,$state,$http,$scope,$uibModalInstance, x) {
+
+.controller('ModalInstanceCtrl1', function ($uibModal,$cookies,$state,$http,$scope,$uibModalInstance, x) {
   $scope.data=x;
-  var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
+  var URL = 'http://fabfresh.elasticbeanstalk.com';
+  $scope.cancel_order = function (size) {
+    var modalInstance1 = $uibModal.open({
+        templateUrl: 'views/cancel_order.html',
+        controller: 'ModalInstanceCtrl2',
+        size: size,
+        resolve: {
+            x: function () {
+              return x;
+            }
+        }
+      });
+    $uibModalInstance.close("");
+  };
+  $scope.update_order = function (size) {
+    if(x.status=='created'){
+      x.change_to='2';
+      x.change_to_status='pickup';
+    }
+    else if(x.status=='drop'){
+      x.change_to='12';
+      x.change_to_status='completed';
+    }
+    var modalInstance1 = $uibModal.open({
+        templateUrl: 'views/update_order.html',
+        controller: 'ModalInstanceCtrl3',
+        size: size,
+        resolve: {
+            x: function () {
+              return x;
+            }
+        }
+      });
+    $uibModalInstance.close("");
+  };
+   $scope.if_drop = function () {
+        return x.status=='drop';
+    }
+    $scope.if_pickup = function () {
+        return x.status=='pickup';
+    }
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
+})
+
+
+
+.controller('ModalInstanceCtrl2', function ($cookies,$state,$http,$scope,$uibModalInstance, x) {
+  $scope.data=x;
+  var URL = 'http://fabfresh.elasticbeanstalk.com';
   $scope.ok = function () {
     $scope.order = {
         "status": "0",
@@ -299,39 +310,6 @@ routerApp
         }
       });
       $uibModalInstance.close("");
-      $uibModalInstance.dismiss('cancel');
-  };
-
-  $scope.cancel = function () {
-    $uibModalInstance.dismiss('cancel');
-  };
-})
-
-
-
-.controller('ModalInstanceCtrl2', function ($cookies,$state,$http,$scope,$uibModalInstance, x) {
-  $scope.data=x;
-  var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
-  $scope.ok = function () {
-    $scope.order = {
-        "status": "12"
-    };
-    $http({
-      method  : 'PATCH',
-      url     : URL+'/orders/'+x.id+'/',
-      data    : $scope.order,
-      headers : {'Content-Type': 'application/json', 'Authorization': 'Bearer '+$cookies.get('key')}//$rootScope.access_token} } 
-     })
-      .success(function(data) {
-        if (data.errors) {
-          alert("Some error occured");
-        }
-        else {
-          alert("Order status is changed to completed.");
-          $state.go($state.current, {}, {reload: true});
-        }
-      });
-      $uibModalInstance.close("");
   };
 
   $scope.cancel = function () {
@@ -342,12 +320,11 @@ routerApp
 
 
 .controller('ModalInstanceCtrl3', function ($cookies,$state,$http,$scope,$uibModalInstance, x) {
-
   $scope.data=x;
-  var URL = 'http://fabfresh-dev.elasticbeanstalk.com';
+  var URL = 'http://fabfresh.elasticbeanstalk.com';
   $scope.ok = function () {
     $scope.order = {
-        "status" : "2"
+        "status": x.change_to
     };
     $http({
       method  : 'PATCH',
@@ -360,7 +337,7 @@ routerApp
           alert("Some error occured");
         }
         else {
-          alert("Order status is changed to pickup.");
+          alert("Order status is changed to "+x.change_to_status+".");
           $state.go($state.current, {}, {reload: true});
         }
       });
@@ -370,4 +347,35 @@ routerApp
   $scope.cancel = function () {
     $uibModalInstance.dismiss('cancel');
   };
+})
+
+
+
+
+.controller('ModalInstanceCtrl4', function ($cookies,$state,$http,$scope,$uibModalInstance, x) {
+
+  $scope.data=x;
+  var URL = 'http://fabfresh.elasticbeanstalk.com';
+  $scope.ok = function () {
+    $http({
+      method  : 'GET',
+      url     : URL+'/v1/reassign/'+x.id+x.chr+'/',
+      headers : {'Authorization': 'Bearer '+$cookies.get('key')}//$rootScope.access_token} } 
+     })
+      .success(function(data) {
+        if (data.errors) {
+          alert("Some error occured");
+        }
+        else {
+          alert("Order is Reassigned.");
+          //$state.go($state.current, {}, {reload: true});
+        }
+      });
+      $uibModalInstance.close("");
+  };
+
+  $scope.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
 });
+

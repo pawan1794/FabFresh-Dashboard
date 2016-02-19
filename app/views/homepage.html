@@ -42,9 +42,9 @@
             Username:{{x.owner.username}}<br>
             Mobile:{{x.owner.UserInfo.phone}}<br>
             Amount:{{x.amount}}<br>
-            After Discount:{{x.afterDiscount}}<br>
-            Coupon Applied:{{x.coupon}}<br>
-            
+            After_Discount:{{x.afterDiscount}}<br>
+            Coupon_Applied:{{x.coupon}}<br>
+            <a  style="position:absolute;bottom:5px;right:10px; " href ng-click="reassign(x,'sm')">{{x.reassign}}</a>
           </p>
           
         </div>
@@ -53,8 +53,7 @@
         </div>
       </div>
       <div style="background-color: {{stringToColor(x.clr)}};" id="cancel_order" >
-          <a  style="margin-left:60px;" href ng-click="update_order(x,'sm')">{{x.update}}</a>
-          <a  ng-show="if_created(x)" style="margin-left:60px;" href ng-click="update_order1(x,'sm')">Update Order..?</a>
+          <a  style="margin-left:60px;" href ng-click="update_order(x,'sm')">Modify Order..?</a>
           
       </div>
     </div>

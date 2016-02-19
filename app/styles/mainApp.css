@@ -4,8 +4,6 @@
 
 }
 
-
-
 #ui_view {
     height:inherit;
     width:100%;
@@ -26,7 +24,7 @@
 #orders{
   border-radius: 15px;
   position: relative;
-  margin-left: 45px;
+  margin-left: 30px;
   margin-top: 90px;
   float: left;
   width: 200px; 
