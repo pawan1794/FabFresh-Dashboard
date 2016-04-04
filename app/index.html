@@ -11,9 +11,10 @@
 
 
     <link rel="stylesheet" href="styles/users.css">
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="styles/main.css">
     <link rel="stylesheet" type="text/css" href="styles/mainApp.css">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    
     
     <style>
         .navbar { border-radius:0; }
@@ -23,7 +24,11 @@
     <script src="http://code.angularjs.org/1.2.13/angular.js"></script>-->
     
     <script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.8/angular-ui-router.min.js"></script>
-
+    <script>
+      function autoclick() {
+        $( '.mdl-layout__drawer, .mdl-layout__obfuscator' ).removeClass( 'is-visible' );
+      }
+    </script>
      <meta charset="utf-8">
     <title>Fabfresh</title>    
 </head>
@@ -58,7 +63,7 @@
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
 
-          <li ng-hide="otp_flag"><a  ui-sref="login" id="login_btn" class="btn">Login</a></li>
+          <li ng-hide="check_session()"><a  ui-sref="login" id="login_btn" class="btn">Login</a></li>
           <!-- Navigation. We hide it in small screens. -->
 
         </div>
@@ -70,8 +75,11 @@
           <a class="mdl-navigation__link" href="">Account Settings</a>
           <a class="mdl-navigation__link" href="">Pricing Agreements</a> -->
 
-              <a class="mdl-navigation__link" ui-sref="homepage">Customer Service</a>
-              <a class="mdl-navigation__link" ui-sref="logout">Logout</a>
+              <a class="mdl-navigation__link" ui-sref="customer_care" onclick="autoclick()">Customer Service</a>
+              <a class="mdl-navigation__link" ui-sref="finance" onclick="autoclick()">Finance</a>
+              <a class="mdl-navigation__link" ui-sref="cloth_info" onclick="autoclick()">Cloth Info</a>
+              <a class="mdl-navigation__link" ui-sref="report" onclick="autoclick()">Report</a>
+              <a class="mdl-navigation__link" ui-sref="logout" onclick="autoclick()">Logout</a>
 
         </nav>
       </div>
@@ -97,6 +105,9 @@
     <script src="bower_components/angular-jquery-timepicker/src/timepickerdirective.js"></script>
     <script src="bower_components/bootstrap-ui-datetime-picker/dist/datetime-picker.min.js"></script>
     <script src="bower_components/material-design-lite/material.min.js"></script>
+    <script src="bower_components/Chart.js/Chart.js"></script>
+    <script src="bower_components/angular-chart.js/dist/angular-chart.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -106,7 +117,10 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/controllers/homeCTRL.js"></script>
     <script src="scripts/controllers/loginCTRL.js"></script>
-    <script src="scripts/controllers/homepageCTRL.js"></script>
+    <script src="scripts/controllers/customer_careCTRL.js"></script>
+    <script src="scripts/controllers/cloth_infoCTRL.js"></script>
+    <script src="scripts/controllers/reportCTRL.js"></script>
+    <script src="scripts/controllers/financeCTRL.js"></script>
     <script src="scripts/controllers/logoutCTRL.js"></script>
     <script src="scripts/hide.js"></script>
     <script src="scripts/services/services.js"></script>

@@ -1,0 +1,52 @@
+<div>
+<div class="box">
+  <div>
+    <form   ng-submit="getFinanceOrdersByDate()">
+      <p style="width:200px;">From: <input type="date" id="date_from" ng-model="from"/></p>
+      <p style="width:200px;" >To: <input type="date" id="date_to" ng-model="to"/></p>
+      <button style="width:100px; " type="submit" class="btn-primary btn">Submit</button>
+    </form>
+  </div>
+  </br>
+  <div class="container-1">
+      <span class="icon"><i class="fa fa-search"></i></span>
+      <input type="search" id="search" ng-model="nameFilter" placeholder="Enter OrderId"/>
+  </div>
+</div>
+
+<table style="width:100%" st-table="ordersList" class="table table-striped" st-safe-src="rowCollection">
+<thead>
+  <tr>
+        <th ng-click="setSorting('id')">Order ID</th>
+        <th ng-click="setSorting('weight')">Weight</th>
+        <th >Coupon</th>
+        <th ng-click="setSorting('amount')"> Amount</th>
+        <th ng-click="setSorting('discount')">Discount</th>
+        <th ng-click="setSorting('afterDiscount')">Total</th>
+  </tr>
+  
+</thead>
+<tbody>
+  <tr ng-repeat="orders in ordersList | orderBy:getSorting() |  filter: searchFilter ">
+    <td>{{orders.id}}</td>
+    <td>{{orders.weight}}</td>
+    <td>{{orders.coupon}}</td>
+    <td>{{orders.amount}}</td>
+    <td>{{orders.discount}}</td>
+    <td>{{orders.afterDiscount}}</td>
+      <!-- <td>
+       <a href ng-click="updateOrderStatus(orders.id)"> 
+          <p>GO</p>
+	  </a></td> -->
+  </tr>
+  <tr style="background-color: #AAAAAA">
+    <td>Total</td>
+    <td>{{ordersList.totalWeight}}</td>
+    <td>-</td>
+    <td>{{ordersList.totalAmount}}</td>
+    <td>{{ordersList.totalAmount-ordersList.totalAfterDiscount}}</td>
+    <td>{{ordersList.totalAfterDiscount}}</td>
+  </tr>
+</tbody>
+</table>
+</div>

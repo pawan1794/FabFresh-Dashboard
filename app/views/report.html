@@ -1,0 +1,18 @@
+<div >
+  <div class="box">
+    <div>
+      <form   ng-submit="searchByDate()">
+        <p style="width:200px;">From: <input type="date" id="date_from" ng-model="from"/></p>
+        <p style="width:200px;" >To: <input type="date" id="date_to" ng-model="to"/></p>
+        <button style="width:100px; " type="submit" class="btn-primary btn">Submit</button>
+      </form>
+    </div>
+    </br>
+  </div>
+  <br>
+  <center><h1>Status Report</h1></center><br>
+  <div >
+  <canvas id="report_status" style="height: 320px;"></canvas>
+  <br>
+  </div>
+</div>

@@ -3,15 +3,20 @@
 
 routerApp
   .controller('homeCTRL', function($state,$cookies,$http, $rootScope,$scope) {
-  		var c = $cookies.get('key');
-  		$scope.getFlag = function() {
-  			return $rootScope.otp_flag;
-  		}
-		if(c){
-			$rootScope.otp_flag=1;
-			$state.go('homepage');
-		}
-		else
-			$rootScope.otp_flag=0;
+  		if(angular.isDefined($cookies.get('token'))){
+        //console.log("true");
+        	$state.go('customer_care');
+      	}
+
+	$scope.check_session=function(){
+      if(angular.isDefined($cookies.get('token'))){
+        //console.log("true");
+        return true;
+      }
+      else{
+         //console.log("false");
+        return false;
+      }
+    }
 });
 
